@@ -3,11 +3,24 @@
     <head>
         <title>Pixels</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     </head>
-    <body>
-        <div class="frame"><div id="circles" class="art"></div></div>
-        <div class="frame"><div id="flowers" class="art"></div></div>
-        <div class="frame"><div id="lines" class="art"></div></div>
+    <body id="main-container">
+        <div class="frame">
+            <h1>The Blackboard</h1>
+            <div id="lines" class="art"></div>
+            <div id="sketchpad"></div>
+        </div>
+        <div class="frame">
+            <h1>Discarded Coins</h1>
+            <div id="circles" class="art"></div>
+        </div>
+        <div class="frame">
+            <h1>Floating Lilies</h1>
+            <div id="flowers" class="art"></div>
+        </div>
+        
         <!-- <div class="frame"><div id="pixels" class="art"></div></div>
         <div class="frame"><div id="pixels" class="art"></div></div> -->
         <script src="p5.js"></script>
