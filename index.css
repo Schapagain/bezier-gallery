@@ -9,6 +9,7 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: rgb(113, 101, 124);
+    overflow-x: hidden;
 }
 
 .art {
@@ -19,10 +20,12 @@ body {
     width: 900px;
     border: 20px solid rgb(85, 32, 10);
     border-radius: 15px;
+    z-index: 100;
 }
 
 .frame {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -30,9 +33,22 @@ body {
     background-color: rgb(113, 101, 124);
 }
 
+.frame > h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 3rem;
+    text-decoration: underline;
+}
+
 .pixel {
     height: 5px;
     width: 5px;
     border: dashed 1px black;
     background-color: rgba(54, 109, 131, 0.014);
+}
+
+#sketchpad {
+
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }
