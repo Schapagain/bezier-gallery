@@ -1,5 +1,5 @@
 
-let canvasSize = 860;
+let canvasSize = 560;
 
 var sketchpad = function(sketch) {
     sketch.setup = function() {
