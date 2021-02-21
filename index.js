@@ -116,7 +116,7 @@ const night = function( sketch ) {
         sketch.endShape(sketch.CLOSE);
         
         chords.push(randomChord());
-        if (chords.length > 200) {
+        if (chords.length > 300) {
             chords.shift();
         }
         for (let chord of chords) {
