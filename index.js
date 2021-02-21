@@ -148,7 +148,7 @@ const night = function( sketch ) {
 
         function randomStar() {
             let x = getRandomInt(0,canvasSize);
-            let y = getRandomInt(0,0.4*canvasSize);
+            let y = getRandomInt(0,Math.random(0.45)*canvasSize);
             let size = getRandomInt(1,5);
             return [x,y,size,size];
         }
