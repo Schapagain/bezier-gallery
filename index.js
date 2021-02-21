@@ -1,24 +1,82 @@
 
 let canvasSize = 560;
 
-var sketchpad = function(sketch) {
+// var sketchpad = function(sketch) {
+//     sketch.setup = function() {
+//         sketch.createCanvas(sketch.windowWidth, sketch.windowHeight);
+//         sketch.frameRate(10);
+//     }
+
+//     sketch.draw = function() {
+//         sketch.fill('rgb(113, 101, 124)');
+//         sketch.rect(0, 0, sketch.width, sketch.height);
+//         sketch.fill(255);
+//         sketch.noStroke();
+//         randRadius = getRandomInt(30,50)
+//         x = getRandomInt(0,sketch.width);
+//         y = getRandomInt(0,sketch.height);
+//         sketch.ellipse(x, y, randRadius, randRadius);
+//     }
+// }
+// new p5(sketchpad,'sketchpad');
+
+
+var shapes = function( sketch ) {
     sketch.setup = function() {
-        sketch.createCanvas(sketch.windowWidth, sketch.windowHeight);
-        sketch.frameRate(10);
+        drawFunctions = [drawEllipse,drawRectange,drawTriangle,drawLine];
+        sketch.createCanvas(canvasSize, canvasSize); 
+        sketch.background('#62c9c4');
+        for (let i = 0; i < 5; i ++) {
+            let sz = 200;
+            for (let draw of drawFunctions) {
+                let x = getRandomInt(0,canvasSize);
+                let y = getRandomInt(0,canvasSize);
+                let color = getRandomColorHex();
+                sketch.fill(color);
+                draw(x,y,sz);
+            }
+        }
     }
 
-    sketch.draw = function() {
-        sketch.fill('rgb(113, 101, 124)');
-        sketch.rect(0, 0, sketch.width, sketch.height);
-        sketch.fill(255);
-        sketch.noStroke();
-        randRadius = getRandomInt(30,50)
-        x = getRandomInt(0,sketch.width);
-        y = getRandomInt(0,sketch.height);
-        sketch.ellipse(x, y, randRadius, randRadius);
+    function drawLine(x,y) {
+        let len = sketch.height
+        let drawVertical = getRandomFloat(0,1);
+        let x1,y1,x2,y2;
+        if (drawVertical > 0.5) {
+            x1 = x;
+            x2 = x;
+            y1 = y - len / 2;
+            y2 = y + len / 2;
+        } else {
+            x1 = x - len / 2;
+            x2 = x + len / 2;
+            y1 = y;
+            y2 = y;
+        }
+        sketch.line(x1,y1,x2,y2);
     }
-}
-// new p5(sketchpad,'sketchpad');
+
+    function drawEllipse(x,y,size) {
+        size1 = getRandomFloat(0.5,1) * size;
+        size2 = getRandomFloat(0.5,1) * size;
+        sketch.ellipse(x,y,size1,size2);
+    }
+
+    function drawRectange(x,y,size) {
+        let width = getRandomFloat(0.1,1) * 2 * size;
+        let height = getRandomFloat(0.1,1) * 2 * size;
+        sketch.rect(x,y,width,height);
+    }
+
+    function drawTriangle(x,y,size) {
+        let topPoint = [x,getRandomFloat(0.5,1)*(y+size)];
+        let leftPoint = [getRandomFloat(0.5,1)*(x-size),y-size];
+        let rightPoint = [getRandomFloat(0.5,1)*(x+size),y-size];
+        let points = [...topPoint,...leftPoint,...rightPoint];
+        sketch.triangle(...points);
+    }
+};
+new p5(shapes,'shapes');
 
 var circles = function( sketch ) {
   sketch.setup = function() {
@@ -80,7 +138,7 @@ const night = function( sketch ) {
     let yoff = 0.0; // 2nd dimension of perlin noise
     sketch.setup = function() {
         sketch.createCanvas(canvasSize, canvasSize);
-        sketch.frameRate(30);
+        sketch.frameRate(20);
     }
     let chords = [];
     let stars = [];
@@ -148,7 +206,7 @@ const night = function( sketch ) {
 
         function randomStar() {
             let x = getRandomInt(0,canvasSize);
-            let y = getRandomInt(0,Math.random(0.45)*canvasSize);
+            let y = getRandomInt(0,getRandomFloat(0,0.5)*canvasSize);
             let size = getRandomInt(1,5);
             return [x,y,size,size];
         }
@@ -158,6 +216,10 @@ const night = function( sketch ) {
 
 };
 new p5(night,'night');
+
+function getRandomFloat(min,max) {
+    return (Math.random() * (max - min) + min).toFixed(4)
+}
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
