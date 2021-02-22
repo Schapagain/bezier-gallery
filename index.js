@@ -1,26 +1,6 @@
 
 let canvasSize = 560;
 
-// var sketchpad = function(sketch) {
-//     sketch.setup = function() {
-//         sketch.createCanvas(sketch.windowWidth, sketch.windowHeight);
-//         sketch.frameRate(10);
-//     }
-
-//     sketch.draw = function() {
-//         sketch.fill('rgb(113, 101, 124)');
-//         sketch.rect(0, 0, sketch.width, sketch.height);
-//         sketch.fill(255);
-//         sketch.noStroke();
-//         randRadius = getRandomInt(30,50)
-//         x = getRandomInt(0,sketch.width);
-//         y = getRandomInt(0,sketch.height);
-//         sketch.ellipse(x, y, randRadius, randRadius);
-//     }
-// }
-// new p5(sketchpad,'sketchpad');
-
-
 var shapes = function( sketch ) {
     sketch.setup = function() {
         drawFunctions = [drawEllipse,drawRectange,drawTriangle,drawLine];
