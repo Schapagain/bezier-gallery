@@ -17,8 +17,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     margin: 2em;
-    height: 600px;
-    width: 600px;
+    height: 400px;
+    width: 400px;
     border: 20px solid rgb(85, 32, 10);
     border-radius: 15px;
     z-index: 100;
