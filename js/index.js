@@ -4,7 +4,7 @@ let canvasSize = document.querySelector('.art').clientHeight;
 const ShapesSketch = function( p ) {
   p.setup = function() {
     const drawFunctions = [drawEllipse, drawLine, drawRectangle, drawTriangle];
-    const roughSize = 200;
+    const roughSize = canvasSize/2.5;
     const numRepeats = 5;
     p.createCanvas(canvasSize, canvasSize); 
     p.background('#62c9c4');
